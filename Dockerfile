@@ -1,17 +1,20 @@
-# Use official Python image
+# Use latest Python image
 FROM python:3.10
 
-# Set working directory
+# Set working directory inside container
 WORKDIR /app
 
-# Copy all files to container
+# Copy files
 COPY . .
+
+# Upgrade pip first (important!)
+RUN pip install --upgrade pip
 
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Expose port 7077
+# Expose API port
 EXPOSE 7077
 
-# Start the FastAPI server
+# Run FastAPI server
 CMD ["uvicorn", "server:app", "--host", "0.0.0.0", "--port", "7077"]
