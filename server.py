@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from bengali.unicode import Avro
+from bengali import Avro
 
 app = FastAPI()
 converter = Avro()  # Avro phonetic transliteration
