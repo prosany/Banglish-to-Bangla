@@ -1,10 +1,10 @@
 from fastapi import FastAPI
-from bn_transliterate import BNTransliterate
+from bengali.unicode import Avro
 
 app = FastAPI()
-bn = BNTransliterate()
+converter = Avro()  # Avro phonetic transliteration
 
 @app.get("/transliterate")
 def transliterate(text: str):
-    bangla_text = bn.transliterate(text)
+    bangla_text = converter.convert(text)
     return {"original": text, "transliterated": bangla_text}
