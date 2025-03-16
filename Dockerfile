@@ -11,10 +11,10 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the FastAPI app into the container
-COPY app.py .
+COPY server.py .
 
 # Expose port 7077
 EXPOSE 7077
 
 # Run the app using Uvicorn with FastAPI on port 7077
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "7077"]
+CMD ["uvicorn", "server:app", "--host", "0.0.0.0", "--port", "7077"]
